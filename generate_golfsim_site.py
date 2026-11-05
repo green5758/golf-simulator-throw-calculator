@@ -421,8 +421,12 @@ def get_cumulative_product_reviews():
                 ("10'×10' Square Basement Golf Studio + Optoma Laser & Fiberbuilt Mat", "10'×10' (1:1)", "5.0' Throw", "12' Room Depth", "10.5' Ceiling")
             ]
             b_name, scr_s, thr_s, dep_s, ceil_s = sim_bays[extra_num % len(sim_bays)]
+            
+            # PERBAIKAN: Pindahkan proses replace ke luar f-string
+            slug_scr = scr_s.split()[0].replace("'", "ft").replace("×", "x")
+            
             proc_tuple = (
-                f"golf-simulator-{scr_s.split()[0].replace('\'','ft').replace('×','x')}-projector-monitor-review-{extra_num}",
+                f"golf-simulator-{slug_scr}-projector-monitor-review-{extra_num}",
                 f"{scr_s} Screen ({thr_s} Mount, {dep_s}) Golf Simulator Package Review (#{extra_num})",
                 f"{scr_s} Complete Sim Studio",
                 "4.8",
